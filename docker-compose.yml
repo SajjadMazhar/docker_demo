@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: sajjadphicode/docker_demo:v0.1.1
+    image: sajjadphicode/docker_demo:latest
     container_name: tower_app
     restart: always
     ports:
