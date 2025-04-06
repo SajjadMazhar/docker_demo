@@ -24,6 +24,14 @@ services:
       - "2717:27017"
     volumes:
       - mongo_data:/data/db
+  
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30
 
 volumes:
   mongo_data:
