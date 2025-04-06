@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    image: sajjadphicode/docker_demo:v0.1.1
+    container_name: tower_app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATABASE_URI=mongodb://naim:naim123@mongo:27017/mydb?authSource=admin
+    volumes:
+      - ./my_vol/:/app/container_vol
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo_db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: naim
+      MONGO_INITDB_ROOT_PASSWORD: naim123
+    ports:
+      - "2717:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
